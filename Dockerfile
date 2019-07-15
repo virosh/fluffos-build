@@ -3,7 +3,7 @@ FROM debian:latest
 MAINTAINER Veselin Mihaylov vm@angband.eu
 LABEL Description="This is a Docker image for building FluffOS driver binaries." 
 LABEL Vendor="Virosh Labs" 
-LABEL Version="1.0" 
+LABEL Version="1.0-v2017" 
 LABEL Instructions="To run: docker run --rm -v /path/to/source:/usr/src/fluffos --env BUILD_FLAGS virlab/fluffos-build:v2017"
 LABEL Filesystem="/usr/src/fluffos: directory where the fluffos source resides."
 LABEL Build_Flags="In order to build \"develop\" version you need to add this flag to the environment variable BUILD_FLAGS. eg. \"export BUILD_FLAGS=develop\""
