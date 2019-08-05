@@ -5,6 +5,7 @@ Please note that the driver binaries are dynamically linked and built using a De
 
 # Build steps
 ## v2019 tag
+WARNING: Currently the driver cannot be built with MySQL support using this image. I am working on it.
  * Clone the [FluffOS repo](https://github.com/fluffos/fluffos).
  * Checkout the **v2019** tag.
  * Create the directory **build** inside it.

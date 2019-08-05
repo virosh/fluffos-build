@@ -1,5 +1,5 @@
 ### FluffOS Docker build file
-FROM debian:latest
+FROM debian:stable
 MAINTAINER Veselin Mihaylov vm@angband.eu
 LABEL Description="This is a Docker image for building FluffOS driver binaries." 
 LABEL Vendor="Virosh Labs" 
@@ -23,7 +23,7 @@ useradd -u $UID -g $GID -G users -d /usr/src/fluffos $USR
 
 ### Install the needed packages.
 RUN apt-get update && \
-apt-get -y install build-essential bison python3 python-pip pkg-config libevent-dev libjemalloc-dev libicu-dev \
+apt-get -y install build-essential bison python3 python-pip pkg-config libevent-2.1-6 libevent-dev libjemalloc-dev libicu-dev \
 default-libmysqlclient-dev libpcre3-dev libpq-dev libsqlite3-dev libssl-dev libz-dev libgtest-dev && \
 apt-get clean && \
 apt-get -y autoremove --purge && \
