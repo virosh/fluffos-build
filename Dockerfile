@@ -24,7 +24,7 @@ useradd -u $UID -g $GID -G users -d /usr/src/fluffos $USR
 ### Install the needed packages.
 RUN apt-get update && \
 apt-get -y install build-essential bison python3 python-pip pkg-config libevent-2.1-6 libevent-dev libjemalloc-dev libicu-dev \
-default-libmysqlclient-dev libpcre3-dev libpq-dev libsqlite3-dev libssl-dev libz-dev libgtest-dev && \
+default-libmysqlclient-dev libpcre3-dev libpq-dev libsqlite3-dev libssl-dev libz-dev libgtest-dev libboost-dev && \
 apt-get clean && \
 apt-get -y autoremove --purge && \
 apt-get clean && \
@@ -34,7 +34,7 @@ pip install --upgrade cmake
 ### Set the user which wich we will run the service
 USER $USR
 
-### Start the build
+### Disable bash history and start the build
 CMD cd build && \
 rm -rf CMakeCache.txt  CMakeFiles  cmake_install.cmake  Makefile  src && \ 
 cmake $BUILD_FLAGS .. && \
