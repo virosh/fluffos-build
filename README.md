@@ -7,14 +7,13 @@ Please note that you need to use a different image tag for building **v2017** an
 
 # Build steps
 ## v2019 tag
-WARNING: Currently the driver cannot be built with MySQL support using this image. I am working on it.
  * Clone the [FluffOS repo](https://github.com/fluffos/fluffos).
  * Checkout the **v2019** tag.
- * Create the directory **build** inside it.
  * Enter **src** directory and edit the **local_options** file to suit your mudlib.
- * Export the environment variable **BUILD_FLAGS** with the packages you want to disable/enable during the build eg. `export BUILD_FLAGS="-DPACKAGE_DB=OFF"` (For more information about packages, please review the FluffOS documentation).
+ * Enter **src** directory and edit the **CMakeFlags.txt** file to enable/disable packages you need.
+ * By default the build type is "Debug". Export the environment variable **BUILD_FLAGS** with "--release" in order to build FluffOS for production. You can also add verbosity by adding "-vvv".
  * Run the build by executing `docker run --rm -v /path/to/fluffos-repo:/usr/src/fluffos --env BUILD_FLAGS virlab/fluffos-build:v2019`
- * When the build is done you will find the binaries inside **build/src** directory.
+ * When the build is done you will find the binaries inside **target/[release|debug]** directory.
 
 ## v2017 tag
  * Clone the [FluffOS repo](https://github.com/fluffos/fluffos).

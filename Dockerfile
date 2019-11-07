@@ -6,7 +6,7 @@ LABEL Vendor="Virosh Labs"
 LABEL Version="1.0-v2019" 
 LABEL Instructions="To run: docker run --rm -v /path/to/source:/usr/src/fluffos --env BUILD_FLAGS virlab/fluffos-build:v2019"
 LABEL Filesystem="/usr/src/fluffos: directory where the fluffos source resides."
-LABEL Build_Flags="In order to enable/disable packages during build you need to add these flags to an environment variable BUILD_FLAGS."
+LABEL Build_Flags="By default the build type is 'Debug'. In order to build for production you need to add '--release' to an environment variable BUILD_FLAGS."
 
 ### Environment variables
 ENV USR user
@@ -23,7 +23,7 @@ useradd -u $UID -g $GID -G users -d /usr/src/fluffos $USR
 
 ### Install the needed packages.
 RUN apt-get update && \
-apt-get -y install build-essential bison python3 python-pip pkg-config libevent-2.1-6 libevent-dev libjemalloc-dev libicu-dev \
+apt-get -y install build-essential bison python3 cargo python-pip pkg-config libevent-2.1-6 libevent-dev libjemalloc-dev libicu-dev \
 default-libmysqlclient-dev libpcre3-dev libpq-dev libsqlite3-dev libssl-dev libz-dev libgtest-dev libboost-dev && \
 apt-get clean && \
 apt-get -y autoremove --purge && \
@@ -34,10 +34,10 @@ pip install --upgrade cmake
 ### Set the user which wich we will run the service
 USER $USR
 
-### Disable bash history and start the build
-CMD cd build && \
-rm -rf CMakeCache.txt  CMakeFiles  cmake_install.cmake  Makefile  src && \ 
-cmake $BUILD_FLAGS .. && \
-make && \
+### Start the build
+CMD cd target && \
+rm -rf debug release && \
+cd /usr/src/fluffos && \
+cargo build $BUILD_FLAGS && \
 echo "Build Done!"
 
