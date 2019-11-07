@@ -10,7 +10,7 @@ Please note that you need to use a different image tag for building **v2017** an
  * Clone the [FluffOS repo](https://github.com/fluffos/fluffos).
  * Checkout the **v2019** tag.
  * Enter **src** directory and edit the **local_options** file to suit your mudlib.
- * Enter **src** directory and edit the **CMakeFlags.txt** file to enable/disable packages you need.
+ * Enter **src** directory and edit the **CMakeLists.txt** file to enable/disable packages you need.
  * By default the build type is "Debug". Export the environment variable **BUILD_FLAGS** with "--release" in order to build FluffOS for production. You can also add verbosity by adding "-vvv".
  * Run the build by executing `docker run --rm -v /path/to/fluffos-repo:/usr/src/fluffos --env BUILD_FLAGS virlab/fluffos-build:v2019`
  * When the build is done you will find the binaries inside **target/[release|debug]** directory.
