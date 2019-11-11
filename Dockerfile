@@ -23,7 +23,7 @@ useradd -u $UID -g $GID -G users -d /usr/src/fluffos $USR
 
 ### Install the needed packages.
 RUN apt-get update && \
-apt-get -y install build-essential bison python3 cargo python-pip pkg-config libevent-2.1-6 libevent-dev libjemalloc-dev libicu-dev \
+apt-get -y install build-essential bison python3 python-pip pkg-config doxygen graphviz libevent-2.1-6 libevent-dev libjemalloc-dev libicu-dev \
 default-libmysqlclient-dev libpcre3-dev libpq-dev libsqlite3-dev libssl-dev libz-dev libgtest-dev libboost-dev && \
 apt-get clean && \
 apt-get -y autoremove --purge && \
@@ -35,9 +35,9 @@ pip install --upgrade cmake
 USER $USR
 
 ### Start the build
-CMD cd target && \
-rm -rf debug release && \
-cd /usr/src/fluffos && \
-cargo build $BUILD_FLAGS && \
+CMD cd build && \
+rm -rf CMakeCache.txt  CMakeFiles  cmake_install.cmake  Makefile  src && \ 
+cmake $BUILD_FLAGS .. && \
+make && \
 echo "Build Done!"
 
