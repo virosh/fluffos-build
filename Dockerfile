@@ -38,6 +38,5 @@ USER $USR
 CMD cd build && \
 rm -rf CMakeCache.txt  CMakeFiles  cmake_install.cmake  Makefile  src && \ 
 cmake $BUILD_FLAGS .. && \
-make && \
-echo "Build Done!"
+make
 
