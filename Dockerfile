@@ -1,6 +1,5 @@
 ### FluffOS Docker build file
 FROM debian:stable
-MAINTAINER Veselin Mihaylov vm@angband.eu
 LABEL Description="This is a Docker image for building FluffOS driver binaries." 
 LABEL Vendor="Virosh Labs" 
 LABEL Version="1.0-v2017" 
