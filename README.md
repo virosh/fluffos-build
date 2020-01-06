@@ -13,7 +13,7 @@ Please note that you need to use a different image tag for building **v2017** an
  * Export the environment variable **BUILD_FLAGS** with the packages you want to disable/enable during the build eg. *export BUILD_FLAGS="-DPACKAGE_DB=OFF"* (For more information about packages, please review the FluffOS documentation).
  * By default the binary is built for *Release*. To build the *Debug* version add the following flag to **BUILD_FLAGS**: *-DCMAKE_BUILD_TYPE=Debug*.
  * Run the build by executing `docker run --rm -v /path/to/fluffos-repo:/usr/src/fluffos --env BUILD_FLAGS virlab/fluffos-build:v2019`
- * When the build is done you will find the binaries inside **build/src** directory.
+ * When the build is done you will find the binaries inside **build/bin** directory.
 
 ## v2017 tag
  * Clone the [FluffOS repo](https://github.com/fluffos/fluffos).
