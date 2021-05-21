@@ -27,6 +27,6 @@ Please note that you need to use a different image tag for building **v2017** an
  * Checkout the **v2017** tag.
  * Enter **src** directory and edit the **local_options** file to suit your mudlib.
  * Export the environment variable **BUILD_FLAGS** with the "develop" flag eg. `export BUILD_FLAGS="develop"`.
- * Run the build by executing `docker run --rm -v /path/to/fluffos-repo:/usr/src/fluffos --env BUILD_FLAGS virlab/fluffos-build:v2017-dev`
+ * Run the build by executing `docker run --rm -v /path/to/fluffos-repo:/usr/src/fluffos --env BUILD_FLAGS virlab/fluffos-build:v2017`
  * When the build is done you will find the binaries inside **src** directory.
 

@@ -22,7 +22,7 @@ useradd -u $UID -g $GID -G users -d /usr/src/fluffos $USR
 
 ### Install the needed packages.
 RUN apt-get update && \
-apt-get -y install build-essential bison python3 python-pip pkg-config doxygen graphviz libevent-2.1-6 libevent-dev libjemalloc-dev libicu-dev \
+apt-get -y install build-essential bison python3 python-pip pkg-config doxygen graphviz git libevent-2.1-6 libevent-dev libjemalloc-dev libicu-dev \
 default-libmysqlclient-dev libpcre3-dev libpq-dev libsqlite3-dev libssl-dev libz-dev libgtest-dev libboost-dev libdw-dev binutils-dev && \
 apt-get clean && \
 apt-get -y autoremove --purge && \
@@ -35,7 +35,8 @@ USER $USR
 
 ### Start the build
 CMD cd build && \
-rm -rf CMakeCache.txt  CMakeFiles  cmake_install.cmake  Makefile  src && \ 
-cmake $BUILD_FLAGS .. && \
-make install
+rm -rf CMakeCache.txt  CMakeFiles  cmake_install.cmake  Makefile  src && \
+echo $BUILD_FLAGS && \
+cmake .. $BUILD_FLAGS && \
+make -j4 install
 
